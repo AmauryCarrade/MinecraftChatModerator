@@ -1,0 +1,5 @@
+name: MinecraftChatModerator
+version: 0.1
+main: eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator
+
+author: "Amaury Carrade"
