@@ -15,37 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package eu.carrade.amaury.MinecraftChatModerator;
+package eu.carrade.amaury.MinecraftChatModerator.listeners;
 
-import eu.carrade.amaury.MinecraftChatModerator.listeners.*;
-import eu.carrade.amaury.MinecraftChatModerator.managers.*;
-import org.bukkit.plugin.java.*;
+import eu.carrade.amaury.MinecraftChatModerator.*;
+import org.bukkit.event.*;
+import org.bukkit.event.player.*;
 
 
-public class MinecraftChatModerator extends JavaPlugin
+public class ChatListener implements Listener
 {
-	private static MinecraftChatModerator instance;
 
-	private PlayersMessagesManager messagesManager;
-
-	@Override
-	public void onEnable()
+	@EventHandler(priority = EventPriority.HIGHEST) // MONITOR unavailable because we may have to cancel the event.
+	public void onAsyncPlayerChat(AsyncPlayerChatEvent ev)
 	{
-		instance = this;
+		MinecraftChatModerator.get().getMessagesManager().savePlayerMessage(ev.getPlayer().getUniqueId(), ev.getMessage());
 
-		messagesManager = new PlayersMessagesManager();
+		// TODO Filters and analyses
 
-		getServer().getPluginManager().registerEvents(new ChatListener(), this);
+		MinecraftChatModerator.get().getMessagesManager().getChatHistory(ev.getPlayer().getUniqueId()).cleanup();
 	}
 
-
-	public PlayersMessagesManager getMessagesManager()
-	{
-		return messagesManager;
-	}
-
-	public static MinecraftChatModerator get()
-	{
-		return instance;
-	}
 }

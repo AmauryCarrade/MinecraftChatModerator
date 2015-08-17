@@ -18,6 +18,7 @@
 package eu.carrade.amaury.MinecraftChatModerator.rawtypes;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 
 public class PlayerChatHistory
@@ -25,7 +26,7 @@ public class PlayerChatHistory
 	private static final Long MAXIMUM_MESSAGE_AGE = 120000l; // ms (120'000 = 2 minutes)
 
 	private UUID playerID;
-	private Set<ChatMessage> messages = new HashSet<>();
+	private Set<ChatMessage> messages = new CopyOnWriteArraySet<>();
 
 
 	/**
