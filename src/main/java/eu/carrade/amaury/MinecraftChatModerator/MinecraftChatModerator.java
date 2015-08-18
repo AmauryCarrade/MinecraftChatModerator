@@ -27,13 +27,18 @@ public class MinecraftChatModerator extends JavaPlugin
 	private static MinecraftChatModerator instance;
 
 	private PlayersMessagesManager messagesManager;
+	private FiltersManager filtersManager;
+	private AnalyzersManager analyzersManager;
+
 
 	@Override
 	public void onEnable()
 	{
 		instance = this;
 
-		messagesManager = new PlayersMessagesManager();
+		messagesManager  = new PlayersMessagesManager();
+		filtersManager   = new FiltersManager();
+		analyzersManager = new AnalyzersManager();
 
 		getServer().getPluginManager().registerEvents(new ChatListener(), this);
 	}
@@ -43,6 +48,17 @@ public class MinecraftChatModerator extends JavaPlugin
 	{
 		return messagesManager;
 	}
+
+	public AnalyzersManager getAnalyzersManager()
+	{
+		return analyzersManager;
+	}
+
+	public FiltersManager getFiltersManager()
+	{
+		return filtersManager;
+	}
+
 
 	public static MinecraftChatModerator get()
 	{

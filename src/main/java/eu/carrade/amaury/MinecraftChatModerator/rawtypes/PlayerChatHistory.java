@@ -25,8 +25,8 @@ public class PlayerChatHistory
 {
 	private static final Long MAXIMUM_MESSAGE_AGE = 120000l; // ms (120'000 = 2 minutes)
 
-	private UUID playerID;
-	private Set<ChatMessage> messages = new CopyOnWriteArraySet<>();
+	private final UUID playerID;
+	private final Set<ChatMessage> messages = new CopyOnWriteArraySet<>();
 
 
 	/**
@@ -63,10 +63,10 @@ public class PlayerChatHistory
 	 */
 	public void cleanup()
 	{
-		Long now = System.currentTimeMillis();
+		Long oldestAllowedTime = System.currentTimeMillis() - MAXIMUM_MESSAGE_AGE;
 
 		new HashSet<>(messages).stream()
-				.filter(message -> message.getTime() < now - MAXIMUM_MESSAGE_AGE)
+				.filter(message -> message.getTime() < oldestAllowedTime)
 				.forEach(messages::remove);
 	}
 

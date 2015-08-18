@@ -22,9 +22,11 @@ import java.util.*;
 
 public class ChatMessage
 {
-	private UUID sender;
+	private final UUID sender;
 	private String message;
-	private Long time;
+	private final Long time;
+
+	private Boolean censored = false;
 
 	/**
 	 * Constructs a new chat message.
@@ -77,6 +79,14 @@ public class ChatMessage
 	}
 
 	/**
+	 * Updates the message's body.
+	 */
+	public void setMessage(String message)
+	{
+		this.message = message;
+	}
+
+	/**
 	 * Returns the message's sending time.
 	 *
 	 * @return The milli-timestamp when the message was sent.
@@ -84,6 +94,27 @@ public class ChatMessage
 	public Long getTime()
 	{
 		return time;
+	}
+
+
+	/**
+	 * Returns true if this message was censored by a filter.
+	 *
+	 * @return The censorship status.
+	 */
+	public Boolean getCensored()
+	{
+		return censored;
+	}
+
+	/**
+	 * Updates the censorship status.
+	 *
+	 * @param censored {@code true} if censored.
+	 */
+	public void setCensored(Boolean censored)
+	{
+		this.censored = censored;
 	}
 
 

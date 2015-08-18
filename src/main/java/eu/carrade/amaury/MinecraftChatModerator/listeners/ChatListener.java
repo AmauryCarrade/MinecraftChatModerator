@@ -18,6 +18,8 @@
 package eu.carrade.amaury.MinecraftChatModerator.listeners;
 
 import eu.carrade.amaury.MinecraftChatModerator.*;
+import eu.carrade.amaury.MinecraftChatModerator.filters.*;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
 import org.bukkit.event.*;
 import org.bukkit.event.player.*;
 
@@ -25,14 +27,34 @@ import org.bukkit.event.player.*;
 public class ChatListener implements Listener
 {
 
+	private final MinecraftChatModerator p = MinecraftChatModerator.get();
+
 	@EventHandler(priority = EventPriority.HIGHEST) // MONITOR unavailable because we may have to cancel the event.
 	public void onAsyncPlayerChat(AsyncPlayerChatEvent ev)
 	{
-		MinecraftChatModerator.get().getMessagesManager().savePlayerMessage(ev.getPlayer().getUniqueId(), ev.getMessage());
+		ChatMessage message       = p.getMessagesManager().savePlayerMessage(ev.getPlayer().getUniqueId(), ev.getMessage());
+		PlayerChatHistory history = p.getMessagesManager().getChatHistory(ev.getPlayer().getUniqueId());
 
-		// TODO Filters and analyses
+		history.cleanup();
 
-		MinecraftChatModerator.get().getMessagesManager().getChatHistory(ev.getPlayer().getUniqueId()).cleanup();
+
+		/* **  Filters  ** */
+
+		try
+		{
+			p.getFiltersManager().filterMessage(message);
+			ev.setMessage(message.getMessage());
+		}
+		catch (MessageRequiresCensorshipException e)
+		{
+			ev.setCancelled(true);
+			ev.setMessage("");
+		}
+
+
+		/* **  Analyzers ** */
+
+		p.getAnalyzersManager().runAnalyzes(history);
 	}
 
 }

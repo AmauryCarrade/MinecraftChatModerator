@@ -25,8 +25,7 @@ import java.util.concurrent.*;
 
 public class PlayersMessagesManager
 {
-	private Map<UUID, PlayerChatHistory> playersHistory = new ConcurrentHashMap<>();
-
+	private final Map<UUID, PlayerChatHistory> playersHistory = new ConcurrentHashMap<>();
 
 	/**
 	 * Returns the chat history of the given player.
@@ -58,10 +57,15 @@ public class PlayersMessagesManager
 	 * @param id The player's UUID.
 	 * @param message The message's body.
 	 * @param time The time this message was sent.
+	 *
+	 * @return The {@link ChatMessage} object inserted in the chat history.
 	 */
-	public void savePlayerMessage(UUID id, String message, Long time)
+	public ChatMessage savePlayerMessage(UUID id, String message, Long time)
 	{
-		getChatHistory(id).addMessage(new ChatMessage(id, message, time));
+		final ChatMessage chatMessage = new ChatMessage(id, message, time);
+
+		getChatHistory(id).addMessage(chatMessage);
+		return chatMessage;
 	}
 
 	/**
@@ -69,9 +73,11 @@ public class PlayersMessagesManager
 	 *
 	 * @param id The player's UUID.
 	 * @param message The message's body.
+	 *
+	 * @return The {@link ChatMessage} object inserted in the chat history.
 	 */
-	public void savePlayerMessage(UUID id, String message)
+	public ChatMessage savePlayerMessage(UUID id, String message)
 	{
-		savePlayerMessage(id, message, System.currentTimeMillis());
+		return savePlayerMessage(id, message, System.currentTimeMillis());
 	}
 }
