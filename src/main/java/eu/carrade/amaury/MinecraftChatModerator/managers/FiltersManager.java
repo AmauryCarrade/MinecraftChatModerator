@@ -32,7 +32,7 @@ public class FiltersManager
 
 	public FiltersManager()
 	{
-		// TODO Register filters
+		registerFilter(new CensorshipFilter());
 	}
 
 
@@ -67,7 +67,7 @@ public class FiltersManager
 				AsyncMessageSender.sendErrorMessage(
 						message.getSender(),
 						ChatColor.RED + "" + ChatColor.BOLD + "Votre message a été censuré.",
-						ChatColor.GRAY + "Motif laissé : " + why + "."
+						ChatColor.GRAY + "Motif : " + why + "."
 				);
 
 				message.setCensored(true);

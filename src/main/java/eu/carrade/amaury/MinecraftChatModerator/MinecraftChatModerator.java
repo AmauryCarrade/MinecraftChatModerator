@@ -36,6 +36,8 @@ public class MinecraftChatModerator extends JavaPlugin
 	{
 		instance = this;
 
+		saveDefaultConfig();
+
 		messagesManager  = new PlayersMessagesManager();
 		filtersManager   = new FiltersManager();
 		analyzersManager = new AnalyzersManager();
