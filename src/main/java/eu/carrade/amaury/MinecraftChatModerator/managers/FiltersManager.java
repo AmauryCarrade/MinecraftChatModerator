@@ -64,12 +64,10 @@ public class FiltersManager
 			{
 				String why = Objects.toString(e.getWhy(), "aucun");
 
-				AsyncMessageSender.sendMessage(
+				AsyncMessageSender.sendErrorMessage(
 						message.getSender(),
-						"",
-						ChatColor.DARK_GRAY + "» " + ChatColor.RED + "" + ChatColor.BOLD + "Votre message a été censuré.",
-						ChatColor.DARK_GRAY + "» " + ChatColor.GRAY + "Motif laissé : " + why + ".",
-						""
+						ChatColor.RED + "" + ChatColor.BOLD + "Votre message a été censuré.",
+						ChatColor.GRAY + "Motif laissé : " + why + "."
 				);
 
 				message.setCensored(true);

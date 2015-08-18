@@ -42,4 +42,19 @@ public final class AsyncMessageSender
 			}
 		});
 	}
+
+	public static void sendErrorMessage(UUID receiver, String... messages)
+	{
+		String[] errorMessages = new String[messages.length + 2];
+
+		errorMessages[0] = "";
+		errorMessages[errorMessages.length - 1] = "";
+
+		for (int i = 0; i < messages.length; i++)
+		{
+			errorMessages[i + 1] = ChatColor.DARK_GRAY + "» " + ChatColor.RESET + messages[i];
+		}
+
+		sendMessage(receiver, errorMessages);
+	}
 }
