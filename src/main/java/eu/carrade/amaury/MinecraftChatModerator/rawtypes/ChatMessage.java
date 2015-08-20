@@ -18,6 +18,7 @@
 package eu.carrade.amaury.MinecraftChatModerator.rawtypes;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 
 public class ChatMessage
@@ -26,7 +27,10 @@ public class ChatMessage
 	private String message;
 	private final Long time;
 
+	private final Map<UUID, String> messageForSpecificPlayer = new ConcurrentHashMap<>();
+
 	private Boolean censored = false;
+
 
 	/**
 	 * Constructs a new chat message.
@@ -79,11 +83,29 @@ public class ChatMessage
 	}
 
 	/**
+	 * Returns the message's body for specific receivers.
+	 *
+	 * @return A map UUID -> message (String) (where the UUID is the specific receiver of this message).
+	 */
+	public Map<UUID, String> getSpecificMessages()
+	{
+		return messageForSpecificPlayer;
+	}
+
+	/**
 	 * Updates the message's body.
 	 */
 	public void setMessage(String message)
 	{
 		this.message = message;
+	}
+
+	/**
+	 * Updates the message's body for a specific receiver.
+	 */
+	public void setMessage(UUID receiver, String message)
+	{
+		messageForSpecificPlayer.put(receiver, message);
 	}
 
 	/**

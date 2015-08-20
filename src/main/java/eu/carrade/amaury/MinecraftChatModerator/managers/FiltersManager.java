@@ -33,6 +33,7 @@ public class FiltersManager
 	public FiltersManager()
 	{
 		registerFilter(new CensorshipFilter());
+		registerFilter(new PingFilter());
 	}
 
 

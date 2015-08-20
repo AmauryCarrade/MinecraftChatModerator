@@ -27,7 +27,7 @@ import java.util.*;
 public class CensorshipFilter implements ChatFilter
 {
 
-	private Set<String> censoredWords = new HashSet<>();
+	private final Set<String> censoredWords = new HashSet<>();
 
 
 	public CensorshipFilter()

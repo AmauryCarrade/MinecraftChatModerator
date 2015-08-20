@@ -20,8 +20,11 @@ package eu.carrade.amaury.MinecraftChatModerator.listeners;
 import eu.carrade.amaury.MinecraftChatModerator.*;
 import eu.carrade.amaury.MinecraftChatModerator.filters.*;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
+import eu.carrade.amaury.MinecraftChatModerator.utils.*;
 import org.bukkit.event.*;
 import org.bukkit.event.player.*;
+
+import java.util.*;
 
 
 public class ChatListener implements Listener
@@ -44,6 +47,21 @@ public class ChatListener implements Listener
 		{
 			p.getFiltersManager().filterMessage(message);
 			ev.setMessage(message.getMessage());
+
+			Map<UUID, String> specificMessages = message.getSpecificMessages();
+			if(!specificMessages.isEmpty())
+			{
+				for (Map.Entry<UUID, String> specificMessage : specificMessages.entrySet())
+				{
+					AsyncMessageSender.sendMessage(
+							specificMessage.getKey(),
+							String.format(ev.getFormat(), ev.getPlayer().getDisplayName(), specificMessage.getValue())
+					);
+				}
+
+				final Set<UUID> excludedRecipientsUUID = specificMessages.keySet();
+				ev.getRecipients().removeIf(player -> excludedRecipientsUUID.contains(player.getUniqueId()));
+			}
 		}
 		catch (MessageRequiresCensorshipException e)
 		{
@@ -56,5 +74,4 @@ public class ChatListener implements Listener
 
 		p.getAnalyzersManager().runAnalyzes(history);
 	}
-
 }
