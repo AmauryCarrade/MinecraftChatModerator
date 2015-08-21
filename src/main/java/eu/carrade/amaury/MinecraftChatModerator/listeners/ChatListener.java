@@ -77,7 +77,7 @@ public class ChatListener implements Listener
 			{
 				for (Map.Entry<UUID, String> specificMessage : specificMessages.entrySet())
 				{
-					AsyncMessageSender.sendMessage(
+					AsyncMessageSender.sendChatMessage(
 							specificMessage.getKey(),
 							String.format(ev.getFormat(), ev.getPlayer().getDisplayName(), specificMessage.getValue())
 					);
