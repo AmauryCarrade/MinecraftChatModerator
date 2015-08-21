@@ -37,7 +37,6 @@ import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
 
 public interface ChatFilter
 {
-
 	/**
 	 * Filters a message.
 	 *
@@ -46,5 +45,4 @@ public interface ChatFilter
 	 * @throws MessageRequiresCensorshipException If this message needs to be censored.
 	 */
 	void filter(ChatMessage message) throws MessageRequiresCensorshipException;
-
 }

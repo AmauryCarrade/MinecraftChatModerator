@@ -37,7 +37,6 @@ import eu.carrade.amaury.MinecraftChatModerator.rawtypes.PlayerChatHistory;
 
 public interface ChatAnalyzer
 {
-
 	/**
 	 * Analyzes the given chat history, making decision about it.
 	 *
