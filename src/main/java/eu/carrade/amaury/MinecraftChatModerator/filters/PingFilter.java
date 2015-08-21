@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,11 +32,13 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.filters;
 
-import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
-import org.bukkit.*;
-import org.bukkit.entity.*;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.Random;
+import java.util.UUID;
 
 
 public class PingFilter implements ChatFilter

@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,14 +32,19 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.listeners;
 
-import eu.carrade.amaury.MinecraftChatModerator.*;
-import eu.carrade.amaury.MinecraftChatModerator.filters.*;
-import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
-import eu.carrade.amaury.MinecraftChatModerator.utils.*;
-import org.bukkit.event.*;
-import org.bukkit.event.player.*;
+import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
+import eu.carrade.amaury.MinecraftChatModerator.filters.MessageRequiresCensorshipException;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.PlayerChatHistory;
+import eu.carrade.amaury.MinecraftChatModerator.utils.AsyncMessageSender;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 
 public class ChatListener implements Listener

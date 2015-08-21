@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,13 +32,17 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.managers;
 
-import eu.carrade.amaury.MinecraftChatModerator.filters.*;
-import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
-import eu.carrade.amaury.MinecraftChatModerator.utils.*;
-import org.bukkit.*;
+import eu.carrade.amaury.MinecraftChatModerator.filters.CensorshipFilter;
+import eu.carrade.amaury.MinecraftChatModerator.filters.ChatFilter;
+import eu.carrade.amaury.MinecraftChatModerator.filters.MessageRequiresCensorshipException;
+import eu.carrade.amaury.MinecraftChatModerator.filters.PingFilter;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
+import eu.carrade.amaury.MinecraftChatModerator.utils.AsyncMessageSender;
+import org.bukkit.ChatColor;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 
 public class FiltersManager

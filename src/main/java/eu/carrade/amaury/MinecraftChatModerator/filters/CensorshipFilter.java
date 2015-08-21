@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,11 +32,12 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.filters;
 
-import eu.carrade.amaury.MinecraftChatModerator.*;
-import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
-import org.bukkit.*;
+import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
+import org.bukkit.ChatColor;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class CensorshipFilter implements ChatFilter

@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,9 +32,11 @@
 
 package eu.carrade.amaury.MinecraftChatModerator;
 
-import eu.carrade.amaury.MinecraftChatModerator.listeners.*;
-import eu.carrade.amaury.MinecraftChatModerator.managers.*;
-import org.bukkit.plugin.java.*;
+import eu.carrade.amaury.MinecraftChatModerator.listeners.ChatListener;
+import eu.carrade.amaury.MinecraftChatModerator.managers.AnalyzersManager;
+import eu.carrade.amaury.MinecraftChatModerator.managers.FiltersManager;
+import eu.carrade.amaury.MinecraftChatModerator.managers.PlayersMessagesManager;
+import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class MinecraftChatModerator extends JavaPlugin

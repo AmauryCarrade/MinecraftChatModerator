@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,7 +32,7 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.filters;
 
-import eu.carrade.amaury.MinecraftChatModerator.rawtypes.*;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
 
 
 public interface ChatFilter

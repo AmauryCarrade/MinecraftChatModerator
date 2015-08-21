@@ -1,5 +1,5 @@
 /*
- * Copyright or © or Copr. AmauryCarrade (2015)
+ * Copyright or © or Copr. Amaury Carrade (2015)
  *
  * http://amaury.carrade.eu
  *
@@ -32,11 +32,12 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.utils;
 
-import eu.carrade.amaury.MinecraftChatModerator.*;
-import org.bukkit.*;
-import org.bukkit.entity.*;
+import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.UUID;
 
 
 public final class AsyncMessageSender
