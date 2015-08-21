@@ -44,8 +44,12 @@ import java.util.*;
 
 public class ChatListener implements Listener
 {
-
-	private final MinecraftChatModerator p = MinecraftChatModerator.get();
+	private final MinecraftChatModerator p;
+	
+	public ChatListener(MinecraftChatModerator p)
+	{
+		this.p = p;
+	}
 
 	@EventHandler(priority = EventPriority.HIGHEST) // MONITOR unavailable because we may have to cancel the event.
 	public void onAsyncPlayerChat(AsyncPlayerChatEvent ev)
