@@ -87,8 +87,8 @@ public abstract class ConfigurationBasedManager<MANAGED>
 	}
 
 	/**
-	 * Register a class to be loaded when [METHOD] is called, if enabled in the configuration file
-	 * associated.
+	 * Register a class to be loaded when {@link #load(ConfigurationSection, String)} is called, if enabled in the
+	 * associated configuration file.
 	 * <p></p>
 	 * <strong>Important</strong> — such a class NEEDS TO have a constructor accepting a
 	 * {@link org.bukkit.configuration.ConfigurationSection} as an argument, eventually {@code null},
