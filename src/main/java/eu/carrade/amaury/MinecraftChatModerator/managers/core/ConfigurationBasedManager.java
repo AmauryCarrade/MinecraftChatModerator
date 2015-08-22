@@ -30,7 +30,7 @@
  * knowledge of the CeCILL-B license and that you accept its terms.
  */
 
-package eu.carrade.amaury.MinecraftChatModerator.managers;
+package eu.carrade.amaury.MinecraftChatModerator.managers.core;
 
 import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
 import org.apache.commons.lang.WordUtils;

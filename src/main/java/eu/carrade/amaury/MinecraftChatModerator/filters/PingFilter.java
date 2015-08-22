@@ -32,6 +32,8 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.filters;
 
+import eu.carrade.amaury.MinecraftChatModerator.filters.core.ChatFilter;
+import eu.carrade.amaury.MinecraftChatModerator.filters.core.MessageRequiresCensorshipException;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

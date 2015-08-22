@@ -32,7 +32,8 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.managers;
 
-import eu.carrade.amaury.MinecraftChatModerator.analyzers.ChatAnalyzer;
+import eu.carrade.amaury.MinecraftChatModerator.analyzers.core.ChatAnalyzer;
+import eu.carrade.amaury.MinecraftChatModerator.managers.core.ConfigurationBasedManager;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.PlayerChatHistory;
 
 

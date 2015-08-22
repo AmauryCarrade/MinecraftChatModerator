@@ -30,19 +30,17 @@
  * knowledge of the CeCILL-B license and that you accept its terms.
  */
 
-package eu.carrade.amaury.MinecraftChatModerator.filters;
+package eu.carrade.amaury.MinecraftChatModerator.analyzers.core;
 
-import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
+import eu.carrade.amaury.MinecraftChatModerator.rawtypes.PlayerChatHistory;
 
 
-public interface ChatFilter
+public interface ChatAnalyzer
 {
 	/**
-	 * Filters a message.
+	 * Analyzes the given chat history, making decision about it.
 	 *
-	 * @param message The sent message.
-	 *
-	 * @throws MessageRequiresCensorshipException If this message needs to be censored.
+	 * @param messages The player's recently sent messages.
 	 */
-	void filter(ChatMessage message) throws MessageRequiresCensorshipException;
+	void analyze(PlayerChatHistory messages);
 }

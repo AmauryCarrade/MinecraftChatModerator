@@ -30,7 +30,7 @@
  * knowledge of the CeCILL-B license and that you accept its terms.
  */
 
-package eu.carrade.amaury.MinecraftChatModerator.filters;
+package eu.carrade.amaury.MinecraftChatModerator.filters.core;
 
 /**
  * Thrown by a chat filter when a message needs to be censored.

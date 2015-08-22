@@ -34,9 +34,10 @@ package eu.carrade.amaury.MinecraftChatModerator.managers;
 
 import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
 import eu.carrade.amaury.MinecraftChatModerator.filters.CensorshipFilter;
-import eu.carrade.amaury.MinecraftChatModerator.filters.ChatFilter;
-import eu.carrade.amaury.MinecraftChatModerator.filters.MessageRequiresCensorshipException;
 import eu.carrade.amaury.MinecraftChatModerator.filters.PingFilter;
+import eu.carrade.amaury.MinecraftChatModerator.filters.core.ChatFilter;
+import eu.carrade.amaury.MinecraftChatModerator.filters.core.MessageRequiresCensorshipException;
+import eu.carrade.amaury.MinecraftChatModerator.managers.core.ConfigurationBasedManager;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
 import eu.carrade.amaury.MinecraftChatModerator.utils.AsyncMessageSender;
 import org.bukkit.ChatColor;

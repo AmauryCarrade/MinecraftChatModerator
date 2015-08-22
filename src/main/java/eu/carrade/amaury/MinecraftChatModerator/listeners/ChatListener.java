@@ -33,7 +33,7 @@
 package eu.carrade.amaury.MinecraftChatModerator.listeners;
 
 import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
-import eu.carrade.amaury.MinecraftChatModerator.filters.MessageRequiresCensorshipException;
+import eu.carrade.amaury.MinecraftChatModerator.filters.core.MessageRequiresCensorshipException;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.PlayerChatHistory;
 import eu.carrade.amaury.MinecraftChatModerator.utils.AsyncMessageSender;
