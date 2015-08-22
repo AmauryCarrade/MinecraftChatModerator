@@ -35,30 +35,13 @@ package eu.carrade.amaury.MinecraftChatModerator.managers;
 import eu.carrade.amaury.MinecraftChatModerator.analyzers.ChatAnalyzer;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.PlayerChatHistory;
 
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
 
-
-public class AnalyzersManager
+public class AnalyzersManager extends ConfigurationBasedManager<ChatAnalyzer>
 {
-	private final Set<ChatAnalyzer> analyzers = new CopyOnWriteArraySet<>();
-
 	public AnalyzersManager()
 	{
 		// TODO register analyzers
 	}
-
-
-	/**
-	 * Registers a new analyzer in the system.
-	 *
-	 * @param analyzer The analyzer.
-	 */
-	public void registerAnalyzer(ChatAnalyzer analyzer)
-	{
-		analyzers.add(analyzer);
-	}
-
 
 	/**
 	 * Runs all the registered analyzers on the given player history.
@@ -67,6 +50,6 @@ public class AnalyzersManager
 	 */
 	public void runAnalyzes(PlayerChatHistory history)
 	{
-		analyzers.stream().forEach(analyzer -> analyzer.analyze(history));
+		managed.stream().forEach(analyzer -> analyzer.analyze(history));
 	}
 }

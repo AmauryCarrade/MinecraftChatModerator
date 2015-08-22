@@ -32,9 +32,9 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.filters;
 
-import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
 import eu.carrade.amaury.MinecraftChatModerator.rawtypes.ChatMessage;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -46,9 +46,11 @@ public class CensorshipFilter implements ChatFilter
 	private final Set<String> censoredWords = new HashSet<>();
 
 
-	public CensorshipFilter()
+	public CensorshipFilter(ConfigurationSection config)
 	{
-		MinecraftChatModerator.get().getConfig().getStringList("censoredWords").stream()
+		if(config == null) return;
+
+		config.getStringList("censoredWords").stream()
 				.map(String::trim)
 				.forEach(censoredWords::add);
 	}

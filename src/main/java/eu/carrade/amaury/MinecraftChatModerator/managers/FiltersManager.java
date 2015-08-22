@@ -32,6 +32,7 @@
 
 package eu.carrade.amaury.MinecraftChatModerator.managers;
 
+import eu.carrade.amaury.MinecraftChatModerator.MinecraftChatModerator;
 import eu.carrade.amaury.MinecraftChatModerator.filters.CensorshipFilter;
 import eu.carrade.amaury.MinecraftChatModerator.filters.ChatFilter;
 import eu.carrade.amaury.MinecraftChatModerator.filters.MessageRequiresCensorshipException;
@@ -41,29 +42,16 @@ import eu.carrade.amaury.MinecraftChatModerator.utils.AsyncMessageSender;
 import org.bukkit.ChatColor;
 
 import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 
-public class FiltersManager
+public class FiltersManager extends ConfigurationBasedManager<ChatFilter>
 {
-	private final Set<ChatFilter> filters = new CopyOnWriteArraySet<>();
-
 	public FiltersManager()
 	{
-		registerFilter(new CensorshipFilter());
-		registerFilter(new PingFilter());
-	}
+		loadAfterFollowingConfig(CensorshipFilter.class);
+		loadAfterFollowingConfig(PingFilter.class);
 
-
-	/**
-	 * Registers a new filter in the system.
-	 *
-	 * @param filter The filter.
-	 */
-	public void registerFilter(ChatFilter filter)
-	{
-		filters.add(filter);
+		load(MinecraftChatModerator.get().getConfig().getConfigurationSection("filters"));
 	}
 
 	/**
@@ -74,7 +62,7 @@ public class FiltersManager
 	 */
 	public void filterMessage(ChatMessage message) throws MessageRequiresCensorshipException
 	{
-		for(ChatFilter filter : filters)
+		for(ChatFilter filter : managed)
 		{
 			try
 			{

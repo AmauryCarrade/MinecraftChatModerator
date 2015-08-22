@@ -1,2 +1,39 @@
-censoredWords:
-    - communisme
+
+# Filters configuration.
+# ------------------------------
+#
+# Each key represents a filter. Two possible way to configure them:
+#
+# 1/ Without configuration
+#
+# Just write « filterName: true » (or “false”) to enable/disable it.
+#
+# 2/ With configuration
+#
+# Use the following format:
+#
+# filterName:
+#     enabled: true/false
+#     options:
+#         # Filter-related options.
+
+filters:
+    Censorship:
+        enabled: true
+        options:
+            censoredWords:
+                - communisme
+
+    Ping:
+        enabled: true
+        options:
+            pingInOwnMessages: true # if false, the mentions of someone by himself will not be highlighted.
+
+
+
+# Analyzers configuration.
+# ------------------------------
+#
+# Same configuration as the filters one.
+
+analyzers:
